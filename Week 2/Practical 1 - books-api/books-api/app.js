@@ -22,7 +22,7 @@ app.get('/books', (req, res) => {
     let reply = "<h1>Books</h1>"; 
     for (var i = 0; i<books.length;i++){ 
       reply += `<h2>ID: ${books[i].id}</h2>`; 
-      reply += `<h2>Titie: ${books[i].title}</h2>`; 
+      reply += `<h2>Title: ${books[i].title}</h2>`; 
       reply += `<h2>Author: ${books[i].author}</h2>`; 
       reply+="<br>" 
     } 
@@ -76,8 +76,9 @@ app.delete('/books/:id', (req, res) => {
     }
 });
 
+const path = require('path');
 app.get('', (req,res) => {
-  res.sendFile('index.html');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
 
  app.listen(port, () => {
