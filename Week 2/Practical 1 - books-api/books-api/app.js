@@ -10,13 +10,24 @@ let books = [
     { id: 2, title: 'Pride and Prejudice', author: 'Jane Austen' },
  ];
 
+app.use(express.static('public'))
+
 // parse incoming JSON data in requests
 app.use(express.json())
 // Configure body-parser to handle URL-encoded form data
 app.use(bodyParser.urlencoded({ extended: true })); // Set extended: true for nested objects
 
- app.get('/books', (req, res) => {
-    res.json(books); // Send the array of books as JSON response
+app.get('/books', (req, res) => { 
+    res.contentType("html"); 
+    let reply = "<h1>Books</h1>"; 
+    for (var i = 0; i<books.length;i++){ 
+      reply += `<h2>ID: ${books[i].id}</h2>`; 
+      reply += `<h2>Titie: ${books[i].title}</h2>`; 
+      reply += `<h2>Author: ${books[i].author}</h2>`; 
+      reply+="<br>" 
+    } 
+    res.send(reply); 
+    //res.json(books); // Send the array of books as JSON response
  });
 
  app.post('/books', (req, res) => {
@@ -65,6 +76,9 @@ app.delete('/books/:id', (req, res) => {
     }
 });
 
+app.get('', (req,res) => {
+  res.sendFile('index.html');
+})
 
  app.listen(port, () => {
     console.log('Hello');
