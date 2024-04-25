@@ -10,10 +10,10 @@ let books = [
     { id: 2, title: 'Pride and Prejudice', author: 'Jane Austen' },
  ];
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 // parse incoming JSON data in requests
-app.use(express.json())
+app.use(express.json());
 // Configure body-parser to handle URL-encoded form data
 app.use(bodyParser.urlencoded({ extended: true })); // Set extended: true for nested objects
 
@@ -79,7 +79,7 @@ app.delete('/books/:id', (req, res) => {
 const path = require('path');
 app.get('', (req,res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
+});
 
  app.listen(port, () => {
     console.log('Hello');
