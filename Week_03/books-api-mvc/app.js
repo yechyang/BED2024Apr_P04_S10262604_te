@@ -6,7 +6,7 @@ const validateBook = require("./middlewares/validateBook");
 const app = express();
 
 app.use(bodyParser.json()); // Parse incoming JSON data in request body
-app.use(bodyParser.urlencoded({ extended: true })); // For form data handling
+app.use(bodyParser.urlencoded({ extended: false })); // For form data handling
 
 app.get("/books", booksController.getAllBooks);
 app.get("/books/:id", booksController.getBookById);
@@ -17,7 +17,8 @@ app.put("/books/:id", booksController.updateBook);
 app.delete("/books/:id", booksController.deleteBook);
 
 
-const port = 3000;
+
+const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
   });

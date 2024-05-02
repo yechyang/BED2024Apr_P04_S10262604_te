@@ -6,7 +6,7 @@ const Joi = require("joi");
        author: Joi.string().min(3).max(50).required(),
      });
 
-     const validation = schema.validate(req.body, { abortEarly: false }); // Validate request body
+     const validation = schema.validate(req.body, { abortEarly: true }); // Validate request body
 
      if (validation.error) {
        const errors = validation.error.details.map((error) => error.message);
