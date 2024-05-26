@@ -28,7 +28,7 @@ app.listen(port, async () => {
   try {
     // Connect to the database
     await sql.connect(dbConfig);
-    console.log("Database connection established successfully");
+    console.log("Database connection established successfully"); 
   } catch (err) {
     console.error("Database connection error:", err);
     // Terminate the application with an error code (optional)
